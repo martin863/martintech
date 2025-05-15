@@ -2,150 +2,77 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-
-const services = [
-  { icon: '💻', title: 'Web Development', desc: 'Building responsive websites with modern tech stack' },
-  { icon: '🔍', title: 'SEO Optimization', desc: 'Boosting search rankings & organic traffic' },
-  { icon: '📈', title: 'Digital Marketing', desc: 'Effective Google/FB ad campaigns' },
-  { icon: '🤖', title: 'AI Training', desc: 'LLM prompting & AI model training' }
-];
 ---
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <BaseHead 
-        title="Martin Mwangi | About" 
-        description="IT Professional & Digital Marketing Expert based in Nairobi, Kenya" 
+        title="About Martin" 
+        description="IT Professional & Digital Solutions Expert based in Nairobi" 
     />
 </head>
 <body>
     <Header />
     
-    <main class="about-container">
-        <section class="hero">
-            <div class="profile-header">
-                <h1>Martin Mwangi</h1>
-                <p class="tagline">Turning Digital Challenges into Growth Opportunities</p>
-            </div>
-            
-            <div class="contact-card">
-                <p>📍 Nairobi, Kenya</p>
-                <p>📞 <a href="tel:+254706495131">+254 706 495131</a></p>
-                <p>📧 <a href="mailto:martinmwangi863@gmail.com">Email Me</a></p>
-                <p>🔗 <a href="https://linkedin.com/in/martin-mwangi-m" target="_blank">LinkedIn Profile</a></p>
-            </div>
-        </section>
-
-        <section class="intro">
-            <h2>Digital Solutions Architect</h2>
-            <p class="bio">
-                With 6+ years of experience in tech and digital marketing, I specialize in creating holistic 
-                web solutions that combine technical excellence with strategic marketing insights. My work 
-                bridges the gap between robust IT infrastructure and impactful digital presence.
+    <main class="short-about">
+        <div class="bio-card">
+            <h1>Martin Mwangi</h1>
+            <p class="compact-bio">
+                A Nairobi-based full-stack developer and digital marketing specialist with 6+ years of experience 
+                crafting web solutions that combine technical excellence (<strong>JavaScript/PHP/MySQL</strong>) 
+                with strategic marketing insights (<strong>SEO/Google Ads/AI Training</strong>). My work focuses 
+                on creating secure, user-centric platforms that drive business growth while maintaining 
+                <em>ethical tech practices</em> and <em>data privacy standards</em>. Currently enhancing travel 
+                industry digital experiences through innovative IT solutions at Dallago Tours.
             </p>
-        </section>
-
-        <section class="expertise">
-            <h3>Core Expertise</h3>
-            <div class="services-grid">
-                {services.map(service => (
-                    <div class="service-card">
-                        <span class="service-icon">{service.icon}</span>
-                        <h4>{service.title}</h4>
-                        <p>{service.desc}</p>
-                    </div>
-                ))}
+            <div class="quick-contact">
+                <a href="mailto:martinmwangi863@gmail.com" class="email">📧 Email</a>
+                <a href="tel:+254706495131" class="phone">📞 Call</a>
             </div>
-        </section>
-
-        <section class="cta">
-            <p>Let's connect and explore how we can elevate your digital presence!</p>
-            <div class="cta-buttons">
-                <a href="/contact" class="button">Contact Me</a>
-                <a href="/portfolio" class="button">View Work</a>
-            </div>
-        </section>
+        </div>
     </main>
 
     <Footer />
 
     <style>
-        .about-container {
-            max-width: 1200px;
-            margin: 0 auto;
+        .short-about {
+            max-width: 800px;
+            margin: 2rem auto;
             padding: 2rem;
         }
-
-        .hero {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .contact-card {
+        
+        .bio-card {
+            padding: 2rem;
             background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 10px;
-            height: fit-content;
-        }
-
-        .tagline {
-            color: #3498db;
-            font-size: 1.2rem;
-            margin-top: 0.5rem;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .service-card {
-            padding: 2rem;
-            border-radius: 8px;
-            background: white;
+            border-radius: 15px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
         }
-
-        .service-card:hover {
-            transform: translateY(-5px);
+        
+        .compact-bio {
+            line-height: 1.6;
+            margin: 1.5rem 0;
+            font-size: 1.1rem;
+            color: #2c3e50;
         }
-
-        .service-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            display: block;
+        
+        .quick-contact {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
         }
-
-        .cta {
-            text-align: center;
-            margin: 4rem 0;
-            padding: 3rem;
-            background: #2c3e50;
-            color: white;
-            border-radius: 10px;
-        }
-
-        .button {
-            display: inline-block;
-            padding: 0.8rem 1.5rem;
-            margin: 0 1rem;
+        
+        .email, .phone {
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            text-decoration: none;
             background: #3498db;
             color: white;
-            border-radius: 5px;
-            text-decoration: none;
             transition: background 0.3s ease;
         }
-
-        @media (max-width: 768px) {
-            .hero {
-                grid-template-columns: 1fr;
-            }
+        
+        .email:hover, .phone:hover {
+            background: #2980b9;
         }
     </style>
 </body>
