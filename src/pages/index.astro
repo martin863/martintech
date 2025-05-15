@@ -3,48 +3,163 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+const experience = [
+  {
+    company: "Dallago Tours Kenya Tanzania Ltd",
+    position: "IT Administrator and Online Marketer",
+    duration: "May 2018 - Present (6 years 8 months)",
+    location: "Nairobi County, Kenya",
+    responsibilities: [
+      "Oversaw installation, configuration, and maintenance of company infrastructure",
+      "Developed and managed online marketing campaigns",
+      "Administered company website and social media platforms",
+      "Implemented data security protocols"
+    ]
+  },
+  // Add other experiences similarly
+];
+
+const skills = [
+  "JavaScript",
+  "Front-End Development",
+  "AI Prompting",
+  "Digital Marketing & SEO",
+  "Web Development",
+  "Google & Facebook Ads",
+  "Data Annotation",
+  "Visa Consultancy"
+];
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<BaseHead title="Martin Mwangi - Professional Portfolio" description={SITE_DESCRIPTION} />
 	</head>
 	<body>
 		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
-					>read the docs
-				</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out <a
-					href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+		<main class="container">
+			<section class="hero">
+				<h1 class="title">Martin Mwangi</h1>
+				<div class="contact-info">
+					<p>📍 Nairobi County, Kenya</p>
+					<p>📞 <a href="tel:+254706495131">+254 706 495131</a></p>
+					<p>📧 <a href="mailto:martinmwangi863@gmail.com">martinmwangi863@gmail.com</a></p>
+					<p>🔗 <a href="https://linkedin.com/in/martin-mwangi-m" target="_blank">LinkedIn Profile</a></p>
+				</div>
+			</section>
+
+			<section class="section">
+				<h2 class="section-title">Professional Summary</h2>
+				<p class="summary">
+					Dedicated IT professional and digital marketing expert with 6+ years of experience in:
+				</p>
+				<ul class="competencies">
+					<li>🚀 SEO strategy development and implementation</li>
+					<li>💻 Full-stack web development (HTML/CSS/JavaScript/PHP/MySQL)</li>
+					<li>📈 Digital marketing campaign management</li>
+					<li>🔒 Cybersecurity and data protection</li>
+					<li>🤖 AI training and prompt engineering</li>
+				</ul>
+			</section>
+
+			<section class="section">
+				<h2 class="section-title">Professional Experience</h2>
+				{experience.map((exp) => (
+					<article class="experience-card">
+						<h3 class="company">{exp.company}</h3>
+						<div class="meta">
+							<span class="position">{exp.position}</span>
+							<span class="duration">{exp.duration}</span>
+							<span class="location">{exp.location}</span>
+						</div>
+						<ul class="responsibilities">
+							{exp.responsibilities.map((resp) => (
+								<li>{resp}</li>
+							))}
+						</ul>
+					</article>
+				))}
+			</section>
+
+			<section class="section">
+				<h2 class="section-title">Technical Skills</h2>
+				<div class="skills-grid">
+					{skills.map((skill) => (
+						<span class="skill-tag">{skill}</span>
+					))}
+				</div>
+			</section>
+
+			<section class="section">
+				<h2 class="section-title">Education</h2>
+				<article class="education-card">
+					<h3>Jomo Kenyatta University of Agriculture and Technology</h3>
+					<p>Bachelor of Science in Information Technology (2017 - 2021)</p>
+				</article>
+				<article class="education-card">
+					<h3>North Eastern National Polytechnic</h3>
+					<p>Diploma in Information Communication Technology (2014 - 2016)</p>
+				</article>
+			</section>
 		</main>
 		<Footer />
+		
+		<style>
+			.container {
+				max-width: 1000px;
+				margin: 0 auto;
+				padding: 2rem;
+			}
+			.hero {
+				text-align: center;
+				margin-bottom: 3rem;
+			}
+			.title {
+				font-size: 2.5rem;
+				color: #2c3e50;
+				margin-bottom: 1rem;
+			}
+			.contact-info {
+				display: flex;
+				gap: 1.5rem;
+				justify-content: center;
+				flex-wrap: wrap;
+			}
+			.section {
+				margin: 3rem 0;
+				padding: 2rem;
+				background: #f8f9fa;
+				border-radius: 10px;
+			}
+			.section-title {
+				color: #3498db;
+				border-bottom: 2px solid #3498db;
+				padding-bottom: 0.5rem;
+				margin-bottom: 1.5rem;
+			}
+			.skills-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+				gap: 1rem;
+			}
+			.skill-tag {
+				background: #3498db;
+				color: white;
+				padding: 0.5rem 1rem;
+				border-radius: 20px;
+				text-align: center;
+			}
+			.experience-card {
+				margin-bottom: 2rem;
+			}
+			.meta {
+				display: flex;
+				gap: 1rem;
+				margin: 0.5rem 0;
+				flex-wrap: wrap;
+			}
+		</style>
 	</body>
 </html>
