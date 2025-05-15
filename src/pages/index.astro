@@ -2,263 +2,164 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
-const timeline = [
-  { year: "2014", title: "Tech Journey Begins", desc: "Started ICT Diploma at North Eastern National Polytechnic" },
-  { year: "2016", title: "First Leadership Role", desc: "Became HOD at Ganana Institute of Medical Sciences" },
-  { year: "2018", title: "Digital Transformation", desc: "Joined Dallago Tours as IT Administrator & Marketer" },
-  { year: "2022", title: "AI Specialization", desc: "Earned ALX AiCE Certification" }
+const experience = [
+  {
+    company: "Dallago Tours Kenya Tanzania Ltd",
+    position: "IT Administrator and Online Marketer",
+    duration: "May 2018 - Present (6 years 8 months)",
+    location: "Nairobi County, Kenya",
+    responsibilities: [
+      "Oversaw installation, configuration, and maintenance of company infrastructure",
+      "Developed and managed online marketing campaigns",
+      "Administered company website and social media platforms",
+      "Implemented data security protocols"
+    ]
+  },
+  // Add other experiences similarly
 ];
 
-const passions = [
-  { icon: '🌍', title: "Travel Tech", desc: "Building solutions for tourism industry" },
-  { icon: '🤖', title: "AI Ethics", desc: "Responsible AI implementation" },
-  { icon: '📚', title: "Continuous Learning", desc: "Daily tech news consumer" }
+const skills = [
+  "JavaScript",
+  "Front-End Development",
+  "AI Prompting",
+  "Digital Marketing & SEO",
+  "Web Development",
+  "Google & Facebook Ads",
+  "Data Annotation",
+  "Visa Consultancy"
 ];
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <BaseHead 
-        title="About Martin | Tech Professional" 
-        description="Discover the journey and philosophy of Martin Mwangi, Nairobi-based digital solutions expert" 
-    />
-    <link rel="stylesheet" href="https://unpkg.com/pattern.css" />
-</head>
-<body class="pattern-zigzag-xl">
-    <Header />
-    
-    <main class="about-page">
-        <section class="identity-section">
-            <div class="profile-photo">
-                <!-- Add your profile image -->
-                <div class="image-placeholder"></div>
-            </div>
-            
-            <div class="identity-content">
-                <h1 class="mega-title">
-                    <span class="highlight">Building Digital</span><br>
-                    <span class="highlight">Futures</span><br>
-                    <span class="subtitle">Since 2014</span>
-                </h1>
-                
-                <div class="signature-block">
-                    <p class="location">📍 Nairobi, Kenya</p>
-                    <div class="signature">
-                        <span>Martin Mwangi</span>
-                        <div class="line"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
+	<head>
+		<BaseHead title="Martin Mwangi - Professional Portfolio" description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main class="container">
+			<section class="hero">
+				<h1 class="title">Martin Mwangi</h1>
+				<div class="contact-info">
+					<p>📍 Nairobi County, Kenya</p>
+					<p>📞 <a href="tel:+254706495131">+254 706 495131</a></p>
+					<p>📧 <a href="mailto:martinmwangi863@gmail.com">martinmwangi863@gmail.com</a></p>
+					<p>🔗 <a href="https://linkedin.com/in/martin-mwangi-m" target="_blank">LinkedIn Profile</a></p>
+				</div>
+			</section>
 
-        <section class="philosophy-section">
-            <h2 class="section-heading">My Tech Philosophy</h2>
-            <div class="philosophy-grid">
-                <div class="philosophy-card">
-                    <h3>01. Purpose First</h3>
-                    <p>Technology should solve real problems, not just create shiny objects</p>
-                </div>
-                <div class="philosophy-card">
-                    <h3>02. Ethical Code</h3>
-                    <p>Security and privacy as fundamental rights in all solutions</p>
-                </div>
-                <div class="philosophy-card">
-                    <h3>03. Growth Mindset</h3>
-                    <p>Every project is an opportunity to learn and improve</p>
-                </div>
-            </div>
-        </section>
+			<section class="section">
+				<h2 class="section-title">Professional Summary</h2>
+				<p class="summary">
+					Dedicated IT professional and digital marketing expert with 6+ years of experience in:
+				</p>
+				<ul class="competencies">
+					<li>🚀 SEO strategy development and implementation</li>
+					<li>💻 Full-stack web development (HTML/CSS/JavaScript/PHP/MySQL)</li>
+					<li>📈 Digital marketing campaign management</li>
+					<li>🔒 Cybersecurity and data protection</li>
+					<li>🤖 AI training and prompt engineering</li>
+				</ul>
+			</section>
 
-        <section class="journey-section">
-            <h2 class="section-heading">Professional Journey</h2>
-            <div class="timeline">
-                {timeline.map(item => (
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h3>{item.year} — {item.title}</h3>
-                            <p>{item.desc}</p>
-                        </div>
-                    </div>
-                ))}
-            </div>
-        </section>
+			<section class="section">
+				<h2 class="section-title">Professional Experience</h2>
+				{experience.map((exp) => (
+					<article class="experience-card">
+						<h3 class="company">{exp.company}</h3>
+						<div class="meta">
+							<span class="position">{exp.position}</span>
+							<span class="duration">{exp.duration}</span>
+							<span class="location">{exp.location}</span>
+						</div>
+						<ul class="responsibilities">
+							{exp.responsibilities.map((resp) => (
+								<li>{resp}</li>
+							))}
+						</ul>
+					</article>
+				))}
+			</section>
 
-        <section class="passions-section">
-            <h2 class="section-heading">Beyond Code</h2>
-            <div class="passions-grid">
-                {passions.map(passion => (
-                    <div class="passion-card">
-                        <span class="passion-icon">{passion.icon}</span>
-                        <h3>{passion.title}</h3>
-                        <p>{passion.desc}</p>
-                    </div>
-                ))}
-            </div>
-        </section>
-    </main>
+			<section class="section">
+				<h2 class="section-title">Technical Skills</h2>
+				<div class="skills-grid">
+					{skills.map((skill) => (
+						<span class="skill-tag">{skill}</span>
+					))}
+				</div>
+			</section>
 
-    <Footer />
-
-    <style>
-        .about-page {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .identity-section {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 4rem;
-            margin-bottom: 6rem;
-        }
-
-        .profile-photo .image-placeholder {
-            width: 100%;
-            height: 500px;
-            background: #e0e0e0;
-            border-radius: 30px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .mega-title {
-            font-size: 4.5rem;
-            line-height: 1;
-            margin: 2rem 0;
-        }
-
-        .highlight {
-            background: linear-gradient(45deg, #2c3e50, #3498db);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .subtitle {
-            font-size: 1.5rem;
-            color: #7f8c8d;
-            margin-top: 1rem;
-            display: block;
-        }
-
-        .signature-block {
-            margin-top: 3rem;
-        }
-
-        .signature {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.5rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .signature .line {
-            width: 100%;
-            height: 2px;
-            background: #3498db;
-            margin-top: -10px;
-        }
-
-        .philosophy-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .philosophy-card {
-            padding: 2rem;
-            border-radius: 15px;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-        }
-
-        .timeline {
-            position: relative;
-            padding: 2rem 0;
-            margin: 4rem 0;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            width: 2px;
-            height: 100%;
-            background: #3498db;
-        }
-
-        .timeline-item {
-            display: flex;
-            margin: 4rem 0;
-            width: 50%;
-            position: relative;
-        }
-
-        .timeline-item:nth-child(odd) {
-            margin-left: auto;
-            flex-direction: row-reverse;
-            text-align: right;
-        }
-
-        .timeline-marker {
-            width: 20px;
-            height: 20px;
-            background: #3498db;
-            border-radius: 50%;
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .passions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .passion-card {
-            text-align: center;
-            padding: 2rem;
-            border: 2px solid #3498db;
-            border-radius: 15px;
-            transition: transform 0.3s ease;
-        }
-
-        .passion-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .passion-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        @media (max-width: 768px) {
-            .identity-section {
-                grid-template-columns: 1fr;
-            }
-            
-            .mega-title {
-                font-size: 3rem;
-            }
-            
-            .timeline::before {
-                left: 20px;
-            }
-            
-            .timeline-item {
-                width: 100%;
-                padding-left: 40px;
-            }
-        }
-    </style>
-</body>
+			<section class="section">
+				<h2 class="section-title">Education</h2>
+				<article class="education-card">
+					<h3>Jomo Kenyatta University of Agriculture and Technology</h3>
+					<p>Bachelor of Science in Information Technology (2017 - 2021)</p>
+				</article>
+				<article class="education-card">
+					<h3>North Eastern National Polytechnic</h3>
+					<p>Diploma in Information Communication Technology (2014 - 2016)</p>
+				</article>
+			</section>
+		</main>
+		<Footer />
+		
+		<style>
+			.container {
+				max-width: 1000px;
+				margin: 0 auto;
+				padding: 2rem;
+			}
+			.hero {
+				text-align: center;
+				margin-bottom: 3rem;
+			}
+			.title {
+				font-size: 2.5rem;
+				color: #2c3e50;
+				margin-bottom: 1rem;
+			}
+			.contact-info {
+				display: flex;
+				gap: 1.5rem;
+				justify-content: center;
+				flex-wrap: wrap;
+			}
+			.section {
+				margin: 3rem 0;
+				padding: 2rem;
+				background: #f8f9fa;
+				border-radius: 10px;
+			}
+			.section-title {
+				color: #3498db;
+				border-bottom: 2px solid #3498db;
+				padding-bottom: 0.5rem;
+				margin-bottom: 1.5rem;
+			}
+			.skills-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+				gap: 1rem;
+			}
+			.skill-tag {
+				background: #3498db;
+				color: white;
+				padding: 0.5rem 1rem;
+				border-radius: 20px;
+				text-align: center;
+			}
+			.experience-card {
+				margin-bottom: 2rem;
+			}
+			.meta {
+				display: flex;
+				gap: 1rem;
+				margin: 0.5rem 0;
+				flex-wrap: wrap;
+			}
+		</style>
+	</body>
 </html>
