@@ -2,44 +2,34 @@
 // src/components/Footer.astro
 
 const currentYear = new Date().getFullYear();
-const newsletterAction = "https://your-domain.com/newsletter-signup"; // Replace with actual endpoint
 ---
 
 <footer class="footer">
   <div class="footer-content">
-    <!-- Newsletter Section -->
     <div class="footer-section">
-      <h4>Stay Updated</h4>
-      <form class="newsletter-form" action={newsletterAction} method="POST">
-        <input type="email" name="email" placeholder="Your professional email" required />
-        <button type="submit">Subscribe</button>
-      </form>
-      <p class="form-note">Get digital insights & tech updates monthly</p>
-    </div>
-
-    <!-- Quick Actions -->
-    <div class="footer-section">
-      <h4>Quick Actions</h4>
+      <h4>Contact Directly</h4>
       <ul>
-        <li><a href="/cv.pdf" download class="download-cv">📥 Download CV</a></li>
-        <li><a href="/consultation">Schedule Consultation</a></li>
-        <li><a href="/ai-resources">AI Resources</a></li>
+        <li><a href="tel:+254706495131">📞 +254 706 495131</a></li>
+        <li><a href="mailto:martinmwangi863@gmail.com">📧 martinmwangi863@gmail.com</a></li>
       </ul>
     </div>
 
-    <!-- Location Map -->
     <div class="footer-section">
-      <h4>Based In</h4>
-      <div class="map-embed">
-        <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.847030510449!2d36.82131431475382!3d-1.268735835980257!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f173c0a1f9de7%3A0xad2c84e5b5e5df6e!2sNairobi%2C%20Kenya!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" 
-          width="100%" 
-          height="150" 
-          style="border:0;" 
-          allowfullscreen="" 
-          loading="lazy">
-        </iframe>
-      </div>
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="/portfolio">Portfolio</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/services">Services</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h4>Certifications</h4>
+      <ul>
+        <li>ALX AiCE Certified</li>
+        <li>Cybersecurity Fundamentals</li>
+        <li>Google Digital Marketing</li>
+      </ul>
     </div>
   </div>
 
@@ -48,97 +38,87 @@ const newsletterAction = "https://your-domain.com/newsletter-signup"; // Replace
       <a href="https://linkedin.com/in/martin-mwangi-m" target="_blank" aria-label="LinkedIn">
         <i class="fab fa-linkedin"></i>
       </a>
-      <a href="https://github.com/yourprofile" target="_blank" aria-label="GitHub">
-        <i class="fab fa-github"></i>
-      </a>
-      <a href="https://twitter.com/yourhandle" target="_blank" aria-label="Twitter">
-        <i class="fab fa-twitter"></i>
-      </a>
     </div>
-    
-    <div class="certification-badges">
-      <img src="/google-digital-cert.png" alt="Google Digital Certification" width="80" height="80" />
-      <img src="/alx-aice-cert.png" alt="ALX AiCE Certification" width="80" height="80" />
-    </div>
-
-    <p>© {currentYear} Martin Mwangi | Championing Ethical Tech Solutions</p>
+    <p>© {currentYear} Martin Mwangi. All rights reserved</p>
   </div>
 </footer>
 
 <style>
-  /* Previous styles remain, add these new styles */
-  
-  .newsletter-form {
+  .footer {
+    background: #2c3e50;
+    color: white;
+    padding: 2rem 1rem;
+    margin-top: 3rem;
+  }
+
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #3498db;
+  }
+
+  .footer-section h4 {
+    color: #3498db;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+  }
+
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .footer-section li {
+    margin: 0.5rem 0;
+  }
+
+  .footer-section a {
+    color: #ecf0f1;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .footer-section a:hover {
+    color: #3498db;
+  }
+
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 1rem auto 0;
+    text-align: center;
+    padding-top: 1rem;
     display: flex;
-    gap: 0.5rem;
     flex-direction: column;
-  }
-
-  .newsletter-form input {
-    padding: 0.8rem;
-    border-radius: 4px;
-    border: 1px solid #3498db;
-    background: rgba(255,255,255,0.1);
-    color: white;
-  }
-
-  .newsletter-form button {
-    background: #3498db;
-    color: white;
-    padding: 0.8rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-
-  .newsletter-form button:hover {
-    background: #2980b9;
-  }
-
-  .form-note {
-    font-size: 0.8rem;
-    opacity: 0.8;
-    margin-top: 0.5rem;
-  }
-
-  .download-cv {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .map-embed {
-    border-radius: 8px;
-    overflow: hidden;
-    margin-top: 0.5rem;
-  }
-
-  .certification-badges {
-    display: flex;
     gap: 1rem;
+  }
+
+  .social-links {
+    display: flex;
     justify-content: center;
-    margin: 1rem 0;
+    gap: 1.5rem;
   }
 
-  .certification-badges img {
-    transition: transform 0.3s ease;
+  .social-links a {
+    color: white;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
   }
 
-  .certification-badges img:hover {
-    transform: translateY(-3px);
+  .social-links a:hover {
+    color: #3498db;
   }
 
   @media (max-width: 768px) {
     .footer-content {
       grid-template-columns: 1fr;
-    }
-    
-    .certification-badges {
-      flex-wrap: wrap;
+      text-align: center;
     }
   }
 </style>
 
-<!-- Font Awesome for icons -->
+<!-- Include Font Awesome for icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
