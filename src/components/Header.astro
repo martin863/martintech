@@ -1,17 +1,7 @@
 ---
 // src/components/Header.astro
 
-const navLinks = [
-  { path: "/", label: "Home" },
-  { path: "/about", label: "About" },
-  { path: "/services", label: "Services", subItems: [
-    { path: "/services#web-dev", label: "Web Development" },
-    { path: "/services#digital-marketing", label: "Digital Marketing" },
-    { path: "/services#ai-training", label: "AI Training" }
-  ]},
-  { path: "/portfolio", label: "Portfolio" },
-  { path: "/blog", label: "Blog" }
-];
+const navLinks = [/* same as before */];
 ---
 
 <header class="header">
@@ -21,26 +11,18 @@ const navLinks = [
       <span class="logo-text">Martin Mwangi</span>
     </a>
 
+    <!-- Mobile Hamburger Button -->
+    <button class="hamburger" aria-label="Toggle menu">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+
     <div class="nav-wrapper">
       <ul class="nav-links">
         {navLinks.map((link) => (
           <li class="nav-item">
-            <a href={link.path} class="nav-link">
-              {link.label}
-              {link.subItems && <span class="dropdown-icon">▾</span>}
-            </a>
-            
-            {link.subItems && (
-              <ul class="dropdown-menu">
-                {link.subItems.map((subItem) => (
-                  <li>
-                    <a href={subItem.path} class="dropdown-item">
-                      {subItem.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            )}
+            <!-- Rest of navigation items same as before -->
           </li>
         ))}
       </ul>
@@ -53,162 +35,117 @@ const navLinks = [
 </header>
 
 <style>
-  /* Base styles */
-  .header {
-    background: #ffffff;
-    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
-    position: relative;
-    z-index: 100;
-  }
-
-  .nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0.8rem 1.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  /* Logo styles */
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    text-decoration: none;
-  }
-
-  .logo-initial {
-    background: #2c3e50;
-    color: white;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 1.2rem;
-  }
-
-  .logo-text {
-    color: #2c3e50;
-    font-weight: 600;
-    font-size: 1.05rem;
-  }
-
-  /* Navigation styles */
-  .nav-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 1.5rem;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .nav-item {
-    position: relative;
-  }
-
-  .nav-link {
-    color: #2c3e50;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.95rem;
-    padding: 0.4rem 0;
-    transition: color 0.2s ease;
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-  }
-
-  .nav-link:hover {
-    color: #3498db;
-  }
-
-  /* Dropdown styles */
-  .dropdown-menu {
-    position: absolute;
-    top: 100%;
-    left: -1rem;
-    background: white;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.08);
-    border-radius: 6px;
-    padding: 0.5rem 0;
-    min-width: 180px;
+  /* Add these mobile styles */
+  .hamburger {
     display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
   }
 
-  .nav-item:hover .dropdown-menu {
+  .hamburger-line {
     display: block;
+    width: 24px;
+    height: 2px;
+    background: #2c3e50;
+    margin: 5px 0;
+    transition: 0.3s ease;
   }
 
-  .dropdown-item {
-    display: block;
-    padding: 0.6rem 1.25rem;
-    color: #2c3e50;
-    text-decoration: none;
-    font-size: 0.9rem;
-    transition: background 0.2s ease;
-  }
-
-  .dropdown-item:hover {
-    background: #f8f9fa;
-  }
-
-  /* CTA button */
-  .cta-button {
-    background: #3498db;
-    color: white;
-    padding: 0.6rem 1.25rem;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.95rem;
-    transition: background 0.2s ease;
-  }
-
-  .cta-button:hover {
-    background: #2980b9;
-  }
-
-  /* Mobile responsive */
   @media (max-width: 768px) {
-    .nav-container {
-      padding: 0.8rem 1rem;
-    }
-
-    .logo-text {
-      display: none;
+    .hamburger {
+      display: block;
+      order: 2;
     }
 
     .nav-wrapper {
-      gap: 1rem;
+      position: fixed;
+      top: 64px;
+      right: -100%;
+      width: 100%;
+      max-width: 300px;
+      height: calc(100vh - 64px);
+      background: white;
+      flex-direction: column;
+      padding: 1.5rem;
+      box-shadow: -2px 0 10px rgba(0,0,0,0.05);
+      transition: 0.3s ease;
+      overflow-y: auto;
+    }
+
+    .nav-wrapper.active {
+      right: 0;
     }
 
     .nav-links {
+      flex-direction: column;
       gap: 1rem;
+      width: 100%;
+    }
+
+    .nav-item {
+      width: 100%;
     }
 
     .nav-link {
-      font-size: 0.9rem;
-    }
-
-    .cta-button {
-      padding: 0.5rem 1rem;
-      font-size: 0.9rem;
+      padding: 0.75rem 0;
+      justify-content: space-between;
     }
 
     .dropdown-menu {
       position: static;
       box-shadow: none;
-      margin-top: 0.5rem;
+      margin-top: 0;
+      display: none;
+      width: 100%;
+      padding-left: 1rem;
+    }
+
+    .dropdown-menu.active {
+      display: block;
+    }
+
+    .cta-button {
+      width: 100%;
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+
+    .logo-text {
+      display: none;
     }
   }
 </style>
+
+<script>
+  // Mobile menu toggle
+  const hamburger = document.querySelector('.hamburger');
+  const navWrapper = document.querySelector('.nav-wrapper');
+  
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navWrapper.classList.toggle('active');
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.nav-container')) {
+      hamburger.classList.remove('active');
+      navWrapper.classList.remove('active');
+    }
+  });
+
+  // Handle dropdown menus on mobile
+  document.querySelectorAll('.nav-item').forEach(item => {
+    const link = item.querySelector('.nav-link');
+    
+    link.addEventListener('click', (e) => {
+      if (window.innerWidth <= 768) {
+        e.preventDefault();
+        const dropdown = item.querySelector('.dropdown-menu');
+        dropdown?.classList.toggle('active');
+      }
+    });
+  });
+</script>
