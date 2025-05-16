@@ -1,139 +1,165 @@
-<style>
-  .container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 1rem;
-  }
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
-  .hero {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
+const experience = [
+  {
+    company: "Dallago Tours Kenya Tanzania Ltd",
+    position: "IT Administrator and Online Marketer",
+    duration: "May 2018 - Present (6 years 8 months)",
+    location: "Nairobi County, Kenya",
+    responsibilities: [
+      "Oversaw installation, configuration, and maintenance of company infrastructure",
+      "Developed and managed online marketing campaigns",
+      "Administered company website and social media platforms",
+      "Implemented data security protocols"
+    ]
+  },
+  // Add other experiences similarly
+];
 
-  .title {
-    font-size: 2rem;
-    color: #2c3e50;
-    margin-bottom: 1rem;
-  }
+const skills = [
+  "JavaScript",
+  "Front-End Development",
+  "AI Prompting",
+  "Digital Marketing & SEO",
+  "Web Development",
+  "Google & Facebook Ads",
+  "Data Annotation",
+  "Visa Consultancy"
+];
+---
 
-  .contact-info {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    justify-content: center;
-  }
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title="Martin Mwangi - Professional Portfolio" description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main class="container">
+			<section class="hero">
+				<h1 class="title">Martin Mwangi</h1>
+				<div class="contact-info">
+					<p>📍 Nairobi County, Kenya</p>
+					<p>📞 <a href="tel:+254706495131">+254 706 495131</a></p>
+					<p>📧 <a href="mailto:martinmwangi863@gmail.com">martinmwangi863@gmail.com</a></p>
+					<p>🔗 <a href="https://linkedin.com/in/martin-mwangi-m" target="_blank">LinkedIn Profile</a></p>
+				</div>
+			</section>
 
-  .section {
-    margin: 2rem 0;
-    padding: 1.5rem;
-    background: #f8f9fa;
-    border-radius: 8px;
-  }
+			<section class="section">
+				<h2 class="section-title">Professional Summary</h2>
+				<p class="summary">
+					Dedicated IT professional and digital marketing expert with 6+ years of experience in:
+				</p>
+				<ul class="competencies">
+					<li>🚀 SEO strategy development and implementation</li>
+					<li>💻 Full-stack web development (HTML/CSS/JavaScript/PHP/MySQL)</li>
+					<li>📈 Digital marketing campaign management</li>
+					<li>🔒 Cybersecurity and data protection</li>
+					<li>🤖 AI training and prompt engineering</li>
+				</ul>
+			</section>
 
-  .section-title {
-    font-size: 1.5rem;
-    color: #3498db;
-    border-bottom: 2px solid #3498db;
-    padding-bottom: 0.5rem;
-    margin-bottom: 1rem;
-  }
+			<section class="section">
+				<h2 class="section-title">Professional Experience</h2>
+				{experience.map((exp) => (
+					<article class="experience-card">
+						<h3 class="company">{exp.company}</h3>
+						<div class="meta">
+							<span class="position">{exp.position}</span>
+							<span class="duration">{exp.duration}</span>
+							<span class="location">{exp.location}</span>
+						</div>
+						<ul class="responsibilities">
+							{exp.responsibilities.map((resp) => (
+								<li>{resp}</li>
+							))}
+						</ul>
+					</article>
+				))}
+			</section>
 
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 0.75rem;
-  }
+			<section class="section">
+				<h2 class="section-title">Technical Skills</h2>
+				<div class="skills-grid">
+					{skills.map((skill) => (
+						<span class="skill-tag">{skill}</span>
+					))}
+				</div>
+			</section>
 
-  .skill-tag {
-    background: #3498db;
-    color: white;
-    padding: 0.5rem;
-    border-radius: 20px;
-    text-align: center;
-    font-size: 0.9rem;
-  }
-
-  .experience-card {
-    margin-bottom: 1.5rem;
-  }
-
-  .meta {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    margin: 0.5rem 0;
-  }
-
-  .meta span {
-    display: block;
-  }
-
-  /* Mobile Responsive Styles */
-  @media (max-width: 768px) {
-    .container {
-      padding: 1rem;
-    }
-
-    .title {
-      font-size: 1.75rem;
-    }
-
-    .contact-info {
-      grid-template-columns: 1fr;
-      text-align: center;
-    }
-
-    .section {
-      margin: 1.5rem 0;
-      padding: 1rem;
-    }
-
-    .section-title {
-      font-size: 1.3rem;
-    }
-
-    .skills-grid {
-      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    }
-
-    .experience-card h3 {
-      font-size: 1.1rem;
-    }
-
-    .meta span {
-      font-size: 0.9rem;
-    }
-
-    .responsibilities li {
-      font-size: 0.9rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .education-card h3 {
-      font-size: 1rem;
-    }
-
-    .education-card p {
-      font-size: 0.9rem;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .title {
-      font-size: 1.5rem;
-    }
-
-    .skill-tag {
-      font-size: 0.8rem;
-      padding: 0.4rem;
-    }
-
-    .section-title {
-      font-size: 1.2rem;
-    }
-
-    .contact-info a {
-      font-size: 0.9rem;
-    }
-  }
-</style>
+			<section class="section">
+				<h2 class="section-title">Education</h2>
+				<article class="education-card">
+					<h3>Jomo Kenyatta University of Agriculture and Technology</h3>
+					<p>Bachelor of Science in Information Technology (2017 - 2021)</p>
+				</article>
+				<article class="education-card">
+					<h3>North Eastern National Polytechnic</h3>
+					<p>Diploma in Information Communication Technology (2014 - 2016)</p>
+				</article>
+			</section>
+		</main>
+		<Footer />
+		
+		<style>
+			.container {
+				max-width: 1000px;
+				margin: 0 auto;
+				padding: 2rem;
+			}
+			.hero {
+				text-align: center;
+				margin-bottom: 3rem;
+			}
+			.title {
+				font-size: 2.5rem;
+				color: #2c3e50;
+				margin-bottom: 1rem;
+			}
+			.contact-info {
+				display: flex;
+				gap: 1.5rem;
+				justify-content: center;
+				flex-wrap: wrap;
+			}
+			.section {
+				margin: 3rem 0;
+				padding: 2rem;
+				background: #f8f9fa;
+				border-radius: 10px;
+			}
+			.section-title {
+				color: #3498db;
+				border-bottom: 2px solid #3498db;
+				padding-bottom: 0.5rem;
+				margin-bottom: 1.5rem;
+			}
+			.skills-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+				gap: 1rem;
+			}
+			.skill-tag {
+				background: #3498db;
+				color: white;
+				padding: 0.5rem 1rem;
+				border-radius: 20px;
+				text-align: center;
+			}
+			.experience-card {
+				margin-bottom: 2rem;
+			}
+			.meta {
+				display: flex;
+				gap: 1rem;
+				margin: 0.5rem 0;
+				flex-wrap: wrap;
+			}
+		</style>
+	</body>
+</html>
